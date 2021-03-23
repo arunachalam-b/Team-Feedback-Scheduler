@@ -1,0 +1,9 @@
+{
+  "name": "schedule_feedback",
+  "version": "1.0.0",
+  "main": "schedule_feedback.js",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
+}
