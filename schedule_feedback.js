@@ -44,6 +44,12 @@ for (let i = 0;i < people.length;i++) {
     }
 }
 
+Object.keys(pairs).map((pair) => {
+    pairs[pair] = sortByValues(pairs[pair]);
+});
+
+showPairMappings(pairs);
+
 function getMinimumIdentialSlot(person1Schedule, person2Schedule) {
     let person1BookedSlots = getBookedSlotsOfAPerson(person1Schedule);
     let person2BookedSlots = getBookedSlotsOfAPerson(person2Schedule);
@@ -81,16 +87,17 @@ function sortByValues(pairs) {
     
     sortable.forEach(function(item){
         objSorted[item[0]]=slotTimings[item[1]];
-        console.log(`${item[0]} = ${slotTimings[item[1]]}`);
     });
     
     return objSorted;
 }
 
-Object.keys(pairs).map((pair) => {
-    console.log(`Name: ${pair}\n\n`);
-    pairs[pair] = sortByValues(pairs[pair]);
-    console.log(`\n\n`);
-})
-
-// console.log("Pairs", pairs);
+function showPairMappings(pairs) {
+    Object.keys(pairs).map((pair) => {
+        console.log(`Name: ${pair}\n\n`);
+        Object.keys(pairs[pair]).map((pairMapping) => {
+            console.log(`${pairMapping} = ${pairs[pair][pairMapping]}`);
+        })
+        console.log(`\n`);
+    });  
+}
